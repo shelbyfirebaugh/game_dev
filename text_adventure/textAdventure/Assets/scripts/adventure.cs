@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class adventure : MonoBehaviour {
 
+	public AudioSource background;
+	public AudioSource sfxSource;
 	public Camera mainCam;
+
+	public AudioClip key;
+	public AudioClip unlock;
 
 	public string currentRoom;
 	public string myText;
@@ -86,6 +91,9 @@ public class adventure : MonoBehaviour {
 			}
 		} else if (currentRoom == "couch") {
 			myText = "there's a curious note under the couch. it says \"x=3 and y=5\"\n\nstrange.\n\npress space to return to the living room";
+			if (!hasNote) {
+				sfxSource.Play ();
+			}
 			hasNote = true;
 
 			if (Input.GetKeyDown (KeyCode.Space)) {
@@ -125,6 +133,12 @@ public class adventure : MonoBehaviour {
 			}
 		} else if (currentRoom == "key") {
 			myText = "maybe this key locks the doors! you take it with you.\n\npress space to return to the laundry room.";
+			if (!hasKey) {
+				sfxSource.clip = key;
+				if (!sfxSource.isPlaying) {
+					sfxSource.Play ();
+				}
+			}
 			hasKey = true;
 
 			if (Input.GetKeyDown (KeyCode.Space)) {
@@ -164,6 +178,11 @@ public class adventure : MonoBehaviour {
 			roomLeft = "corner room";
 
 			myText = "you unlocked the door!";
+
+			sfxSource.clip = unlock;
+			if (!sfxSource.isPlaying) {
+				sfxSource.Play ();
+			}
 
 
 		}
