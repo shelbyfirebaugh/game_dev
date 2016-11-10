@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/scenes/char_move.unity
+  isLoaded: 1
+  isActive: 1

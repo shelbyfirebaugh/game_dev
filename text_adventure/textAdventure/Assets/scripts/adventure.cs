@@ -139,24 +139,35 @@ public class adventure : MonoBehaviour {
 			roomLeft = "corner room";
 
 			myText = "you're in the entryway. the door is locked, but you notice something odd next to it.\n\nupon further inspection, you realize it's a keypad.\n\npress\"c\" to climb up to it.";
+
+			if (hasCode == true) {
+				currentRoom = "answer";
+			}
+
 			if (Input.GetKeyDown (KeyCode.C)) {
 				currentRoom = "keypad";
 			}
 		} else if (currentRoom == "keypad") {
+			
+			myText = "you wonder what the code could be....\n\non the screen it says \"x+y\".\n\nenter your best guess, or press space to return to the entryway.";
 
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				currentRoom = "entryway";
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha8)) {
+				hasCode = true;
+				currentRoom = "answer";
+			}
+		} else if (currentRoom == "answer") {
 			roomRight = "garage";
 			roomLeft = "corner room";
 
-			myText = "you wonder what the code could be....\n\non the screen it says \"x+y\".\n\nenter your best guess.";
+			myText = "you unlocked the door!";
 
-			if (Input.GetKeyDown(KeyCode.Alpha8)) {
-					myText = "you unlocked the door!";
-				hasCode = true;
-			}
 
-			if(
-			} else if (currentRoom == "garage") {
-			roomLeft = "entryway";
+		}
+		else if (currentRoom == "garage") {
 
 			myText = "you're in the garage. it's dark and a little bit scary...\n\nbut you spy a sliver of light across the room!\n\nyou approach, and discover that there is a small hole in the wall.\n\nyou squeeze through and...\n\noutside, the breeze smells like freedom.\n\nand perhaps a hint of sea water....";
 		}
