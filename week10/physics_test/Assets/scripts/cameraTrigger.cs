@@ -5,7 +5,7 @@ public class cameraTrigger : MonoBehaviour {
 	
 //	public GameObject camToActivate;
 
-	public int camNumber;
+	public Camera camToActivate;
 
 	public cameraController controller;
 
@@ -13,6 +13,6 @@ public class cameraTrigger : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 
 		controller.deactivateCameras ();
-		camToActivate.SetActive (true);
+		camToActivate.enabled = true;
 	}
 }

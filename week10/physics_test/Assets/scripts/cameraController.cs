@@ -3,19 +3,22 @@ using System.Collections;
 
 public class cameraController : MonoBehaviour {
 
-	public GameObject camera1;
-	public GameObject camera2;
+//	public GameObject camera1;
+//	public GameObject camera2;
 
-	public GameObject[] cameras;
+
+	int currentCam;
+
+	public Camera[] cams;
 
 	// Use this for initialization
 	void Start () {
 //		camera1.SetActive(true);
 //		camera2.SetActive(false);
 
-		deactivateCameras ();
-		cameras [0].SetActive (true);
-		public int currentCam = 0;
+//		deactivateCameras ();
+		cams [0].enabled = true;
+		currentCam = 0;
 
 	}
 	
@@ -28,24 +31,29 @@ public class cameraController : MonoBehaviour {
 
 			deactivateCameras ();
 
-			if (currentCam < cameras.Length - 1) {
+			if (currentCam < cams.Length - 1) {
 				
 				currentCam += 1;
+			} else {
+				currentCam = 0;
 			}
 
+			activateCameras (currentCam);
 
 		}
 
 		}
 
-	public void activateCameras(){
+	public void activateCameras(int _index){
+		cams [_index].enabled = true;
 
+		currentCam = _index;
 	}
 
 	public void deactivateCameras(){
 
-		for (int i = 0; i < cameras.Length; i++){
-			cameras[i].SetActive(false);
+		for (int i = 0; i < cams.Length; i++){
+			cams[i].enabled = false;
 		}
 	
 	}
