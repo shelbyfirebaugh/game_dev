@@ -3,16 +3,25 @@ using System.Collections;
 
 public class cameraTrigger : MonoBehaviour {
 	
-//	public GameObject camToActivate;
 
 	public Camera camToActivate;
 
-	public cameraController controller;
+	public Camera[] cams;
+
+//	public cameraController controller;
 
 	// Use this for initialization
-	void OnTriggerEnter(Collider other){
+	public void OnTriggerEnter(Collider other){
 
-		controller.deactivateCameras ();
+		deactivateCameras ();
 		camToActivate.enabled = true;
+	}
+
+	public void deactivateCameras(){
+
+		for (int i = 0; i < cams.Length; i++){
+			cams[i].enabled = false;
+		}
+
 	}
 }

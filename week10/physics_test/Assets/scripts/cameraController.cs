@@ -25,29 +25,29 @@ public class cameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-//			camera1.SetActive (!camera1.active);
-//			camera2.SetActive (!camera2.active);
 
-			deactivateCameras ();
+//		deactivateCameras ();
+//
+//		activateCameras (currentCam);
 
-			if (currentCam < cams.Length - 1) {
-				
-				currentCam += 1;
-			} else {
-				currentCam = 0;
-			}
+//			deactivateCameras ();
+//
+//			if (currentCam < cams.Length - 1) {
+//				
+//				currentCam += 1;
+//			} else {
+//				currentCam = 0;
+//			}
+//
+//			activateCameras (currentCam);
 
-			activateCameras (currentCam);
 
 		}
 
-		}
+	public void activateCameras(currentCam){
+		cams [currentCam].enabled = true;
 
-	public void activateCameras(int _index){
-		cams [_index].enabled = true;
-
-		currentCam = _index;
+//		currentCam = _index;
 	}
 
 	public void deactivateCameras(){
