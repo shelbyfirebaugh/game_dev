@@ -11,6 +11,10 @@ public class PrincessController : MonoBehaviour {
 
 	private float nextFire;
 
+	public GameObject block;
+
+
+
 //	private Rigidbody2D rb2d;
 
 	void Start(){
@@ -24,6 +28,14 @@ public class PrincessController : MonoBehaviour {
 		if (Input.GetMouseButton (0) && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+		}
+
+		if (Input.GetMouseButton (1) && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Vector3 screenPoint = Input.mousePosition;
+			screenPoint.z = 10.0f; //distance of the plane from the camera
+			screenPoint = Camera.main.ScreenToWorldPoint(screenPoint);
+			Instantiate (block, screenPoint, shotSpawn.rotation);
 		}
 		
 
